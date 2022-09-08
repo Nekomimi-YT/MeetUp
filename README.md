@@ -1,4 +1,4 @@
-### The MeetUp Event App
+# The MeetUp Event App
 
 ## Objective:
 To build a serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming events.
@@ -14,7 +14,7 @@ To build a serverless, progressive web application (PWA) with React using a test
 
 ## User Stories and Scenario Tests
 
-# FEATURE 1: FILTER EVENTS BY CITY
+### FEATURE 1: FILTER EVENTS BY CITY
 **Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities.**
 User Story:
 As a user, 
@@ -48,14 +48,14 @@ Given user was typing “Hamburg” in the city textbox and the suggestions list
 When the user selects a city (e.g.,“Hamburg”) from the list
 Then their city should be changed to the chosen city and the user should receive a list of upcoming events from that city
 
-# FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS
+### FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS
 **Scenario 1: An event element is collapsed by default**
 User Story:
 As a user,
 I should be able to see clearly that event elements are collapsed
 So that I understand they can be opened for more information
 
-# Scenario Test:
+Scenario Test:
 Given user is using the app within it’s default setting
 When the user sees the event element
 Then element is collapsed and obvious that it can be opened
@@ -82,7 +82,7 @@ Given a user wants to minimize an event details element
 When the user interacts with the element
 Then it collapses back to the default setting and hides details
 
-# FEATURE 3: SPECIFY NUMBER OF EVENTS
+### FEATURE 3: SPECIFY NUMBER OF EVENTS
 **Scenario 1: When user hasn’t specified a number, 32 is the default number**
 User Story:
 As a user
@@ -105,7 +105,7 @@ Given the user wants to change the number of events displayed
 When the user views the events list
 Then the use can change the preferred number of displayed events
 
-# FEATURE 4: USE THE APP WHEN OFFLINE
+### FEATURE 4: USE THE APP WHEN OFFLINE
 **Scenario 1: Show cached data when there’s no internet connection**
 User Story:
 As a user
@@ -128,7 +128,7 @@ Given the user wants to change settings
 When the app is offline or experiencing slow data speed
 Then the app warns the user that they may lose cached event data
 
-# FEATURE 5: DATA VISUALIZATION
+### FEATURE 5: DATA VISUALIZATION
 **Scenario 1: Show a chart with the number of upcoming events in each city**
 User Story:
 As a user
