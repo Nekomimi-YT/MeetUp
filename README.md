@@ -118,24 +118,24 @@ When the user wants to access recent event information
 Then the app should show cached recent event information
 
 **Scenario 2: Show error when user changes the settings (city, time range)**
-User Story:
+User Story:  
 As a user
 I should be able to receive a warning if I try to change setting when offline
 So that I don’t lose access to cached data on events that may be useful
 
-Scenario Test:
+Scenario Test:  
 Given the user wants to change settings
 When the app is offline or experiencing slow data speed
 Then the app warns the user that they may lose cached event data
 
 ### FEATURE 5: DATA VISUALIZATION
 **Scenario 1: Show a chart with the number of upcoming events in each city**
-User Story:
+User Story:  
 As a user
 I should be able to easily see how many events are happening in each city
 So that it’s clear and easy to understand at a glance
 
-Scenario Test:
+Scenario Test:  
 Given multiple events in multiple cities
 When the user wants to quickly check for events in different cities
 Then upcoming events are clearly displayed for easy viewing
