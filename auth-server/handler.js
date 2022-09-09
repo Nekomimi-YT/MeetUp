@@ -20,7 +20,6 @@ const oAuth2Client = new google.auth.OAuth2 (
   client_id,
   client_secret,
   redirect_uris[0],
-  calendar_id //added calendar_id here - since it wasn't being used and I think we need it ?!
 );
 
 module.exports.getAuthURL = async () => {
