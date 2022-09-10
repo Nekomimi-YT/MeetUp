@@ -5,7 +5,7 @@ const calendar = google.calendar('v3');
 const SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 
 const credentials = {
-  client_id: process.env.CLIENT_ID,
+  client_id: process.env.CLIENT_ID, //refers to config.json for assignment
   project_id: process.env.PROJECT_ID,
   client_secret: process.env.CLIENT_SECRET,
   calendar_id: process.env.CALENDAR_ID,
