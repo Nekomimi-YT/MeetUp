@@ -32,7 +32,7 @@ module.exports.getAuthURL = async () => {
   return {
     statusCode: 200,
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      'Access-Control-Allow-Origin': '*',
     },
     body: JSON.stringify({
       authUrl: authUrl
@@ -60,6 +60,9 @@ module.exports.getAccessToken = async (event) => {
     .then(token =>  {
       return {
         statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
         body: JSON.stringify(token)
       };
     })
