@@ -76,6 +76,7 @@ module.exports.getAccessToken = async (event) => {
 }
 
 module.exports.getCalendarEvents = async (event) => {
+  
   const oAuth2Client = new google.auth.OAuth2(
     client_id,
     client_secret,
@@ -83,23 +84,25 @@ module.exports.getCalendarEvents = async (event) => {
   );
 
   const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
-  oAuth2Client.setCredentials({ access_token });
+  oAuth2Client.setCredentials({ access_token }); //destructures to get the value of access_token from the object
 
   return new Promise((resolve, reject) => {
-    oAuth2Client.getCalendarEvents({
-      calendarId: calendar_id,
-      auth: oAuth2Client,
-      timeMin: new Date().toISOString(),
-      singleEvents: true,
-      orderBy: "startTime",
-      }, 
-      (err, response) => {
-        if (err) {
-          reject(err);
+    calendar.events.list(
+      {
+        calendarId: calendar_id,
+        auth: oAuth2Client,
+        timeMin: new Date().toISOString(),
+        singleEvents: true,
+        orderBy: "startTime",
+      },
+      (error, response) => {
+        if (error) {
+          reject(error);
         } else {
           resolve(response);
         }
-    });
+      }
+    );
   })
   .then(results =>  {
     return {
