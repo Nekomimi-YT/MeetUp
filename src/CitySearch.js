@@ -7,7 +7,9 @@ class CitySearch extends Component {
         <input
         type="text"
         className="city"
-      />
+        />
+        <ul className="suggestions">
+        </ul>
       </div>
     );
   }
