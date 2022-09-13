@@ -23,4 +23,9 @@ describe('<Event /> component', () => {
     const EventWrapper = shallow(<Event />);
     expect(EventWrapper.find('.DetailsButton')).toHaveLength(1);
   });
+
+  test('render uncollapsed event info container', () => {
+    const EventWrapper = shallow(<Event />);
+    expect(EventWrapper.find('.uncollapsedDetails')).toHaveLength(1);
+  });
 })
