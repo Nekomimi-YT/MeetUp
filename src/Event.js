@@ -13,6 +13,11 @@ class Event extends Component {
       </div>
       <button className="DetailsButton">Show Details</button>
       <div className="uncollapsedDetails">
+      <h4>About this event</h4>
+      <p>
+      <a href={mockData[0].htmlLink}>See details on Google Calendar</a>
+      </p>
+      <p>{mockData[0].description}</p>
       </div>
     </div>
     
