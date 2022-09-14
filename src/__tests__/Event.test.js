@@ -36,16 +36,18 @@ describe('<Event /> component', () => {
     expect((EventWrapper.find('.uncollapsedDetails')).text()).toContain(event.description);
   });
 
-  test('change uncollapsed state when button is clicked', () => {
+  test('change uncollapsed and buttonText state when button is clicked', () => {
     const EventWrapper = shallow(<Event />);
     EventWrapper.setState({ uncollapsed: false });
-    let { uncollapsed } = EventWrapper.state;
-    const buttonClick = EventWrapper.buttonClick;
-    EventWrapper.find('.DetailsButton').simulate('click', buttonClick);
+    const { uncollapsed } = EventWrapper.state;
+    const handleCollapse = EventWrapper.handleCollapse;
+    EventWrapper.find('.DetailsButton').simulate('click', handleCollapse);
     if (uncollapsed === false) {
-    expect(EventWrapper.state('uncollapsed')).toBe(true);
-    } else {
+      expect(EventWrapper.state('uncollapsed')).toBe(true);
+      expect(EventWrapper.state('buttonText')).toBe('Hide details');
+      } else {
       expect(EventWrapper.state('uncollapsed')).toBe(false); 
+      expect(EventWrapper.state('buttonText')).toBe('Show details');
     }
   });  
 })
