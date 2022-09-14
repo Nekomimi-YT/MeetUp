@@ -4,20 +4,25 @@ import { mockData } from './mock-data';
 class Event extends Component {
   constructor(props) {
     super(props);
-    this.state = { uncollapsed : false }
+    this.state = { 
+      uncollapsed : false,
+      buttonText : 'Show details' }
   };
   
-  buttonClick () {
+  handleCollapse () { 
     const { uncollapsed } = this.state;
-    if (uncollapsed === false) {
-      this.setState({uncollapsed: true});
+    if (uncollapsed == false) {
+      this.setState({ uncollapsed: true });
+      this.setState({ buttonText: 'Hide details' });
     } else {
-      this.setState({uncollapsed: false});
+      this.setState({ uncollapsed: false });
+      this.setState({ buttonText: 'Show details' });
     }
   }
 
   render() {
-    const { event } = this.props;
+    const { event } = this.props; //unable to use event in place of mockData[0]
+    const { buttonText } = this.state;
     return <div>
       <div className="collapsedDetails">
         <h3>{mockData[0].summary}</h3>
@@ -30,7 +35,7 @@ class Event extends Component {
         {mockData[0].htmlLink}See details on Google Calendar
         <p>{mockData[0].description}</p>
       </div>
-      <button className="DetailsButton" onClick={() => {this.buttonClick}}>Show Details</button>
+      <button className="DetailsButton" onClick={() => {this.handleCollapse()}}>{buttonText}</button>
     </div>
   }
 }
