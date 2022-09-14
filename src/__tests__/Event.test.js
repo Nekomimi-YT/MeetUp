@@ -40,13 +40,7 @@ describe('<Event /> component', () => {
     const EventWrapper = shallow(<Event />);
     EventWrapper.setState({ uncollapsed: false });
     let { uncollapsed } = EventWrapper.state;
-    const buttonClick = function () { onClick = () => {
-      if (uncollapsed === false) {
-        this.setState({ uncollapsed: true })
-      } else {
-        this.setState({ uncollapsed: false })
-      }
-    }};
+    const buttonClick = EventWrapper.buttonClick;
     EventWrapper.find('.DetailsButton').simulate('click', buttonClick);
     if (uncollapsed === false) {
     expect(EventWrapper.state('uncollapsed')).toBe(true);
@@ -54,6 +48,4 @@ describe('<Event /> component', () => {
       expect(EventWrapper.state('uncollapsed')).toBe(false); 
     }
   });  
-
-
 })
