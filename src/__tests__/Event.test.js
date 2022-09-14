@@ -35,4 +35,25 @@ describe('<Event /> component', () => {
     expect((EventWrapper.find('.uncollapsedDetails')).text()).toContain(event.htmlLink);
     expect((EventWrapper.find('.uncollapsedDetails')).text()).toContain(event.description);
   });
+
+  test('change uncollapsed state when button is clicked', () => {
+    const EventWrapper = shallow(<Event />);
+    EventWrapper.setState({ uncollapsed: false });
+    let { uncollapsed } = EventWrapper.state;
+    const buttonClick = function () { onClick = () => {
+      if (uncollapsed === false) {
+        this.setState({ uncollapsed: true })
+      } else {
+        this.setState({ uncollapsed: false })
+      }
+    }};
+    EventWrapper.find('.DetailsButton').simulate('click', buttonClick);
+    if (uncollapsed === false) {
+    expect(EventWrapper.state('uncollapsed')).toBe(true);
+    } else {
+      expect(EventWrapper.state('uncollapsed')).toBe(false); 
+    }
+  });  
+
+
 })
