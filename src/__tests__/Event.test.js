@@ -51,7 +51,7 @@ describe('<Event /> component', () => {
 
   test('render state-specific innerText in button', () => {
     const EventWrapper = shallow(<Event />);
-    const { buttonText } = EventWrapper.state; //returning an object => the whole state??
-    expect((EventWrapper.find('.DetailsButton')).text()).toContain({buttonText});
+    const buttonText= EventWrapper.state('buttonText'); //returning an object => the whole state??
+    expect((EventWrapper.find('.DetailsButton')).text()).toContain(buttonText);
   });
 })
