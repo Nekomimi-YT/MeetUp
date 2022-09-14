@@ -24,14 +24,19 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find('.DetailsButton')).toHaveLength(1);
   });
 
-  test('render uncollapsed event info container', () => {
+  test('render uncollapsed event info container when uncollapsed = true', () => {
     const EventWrapper = shallow(<Event />);
+    expect(EventWrapper.find('.uncollapsedDetails')).toHaveLength(0);
+    const handleCollapse = EventWrapper.handleCollapse;
+    EventWrapper.find('.DetailsButton').simulate('click', handleCollapse);
     expect(EventWrapper.find('.uncollapsedDetails')).toHaveLength(1);
   });
 
-  test('render uncollapsed event info text', () => {
+  test('render uncollapsed event info text when uncollapsed = true', () => {
     const event = mockData[0];
     const EventWrapper = shallow(<Event event={event}/>);
+    const handleCollapse = EventWrapper.handleCollapse;
+    EventWrapper.find('.DetailsButton').simulate('click', handleCollapse);
     expect((EventWrapper.find('.uncollapsedDetails')).text()).toContain(event.htmlLink);
     expect((EventWrapper.find('.uncollapsedDetails')).text()).toContain(event.description);
   });
