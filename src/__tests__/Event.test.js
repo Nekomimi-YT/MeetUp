@@ -28,4 +28,11 @@ describe('<Event /> component', () => {
     const EventWrapper = shallow(<Event />);
     expect(EventWrapper.find('.uncollapsedDetails')).toHaveLength(1);
   });
+
+  test('render uncollapsed event info text', () => {
+    const event = mockData[0];
+    const EventWrapper = shallow(<Event event={event}/>);
+    expect((EventWrapper.find('.uncollapsedDetails')).text()).toContain(event.htmlLink);
+    expect((EventWrapper.find('.uncollapsedDetails')).text()).toContain(event.description);
+  });
 })
