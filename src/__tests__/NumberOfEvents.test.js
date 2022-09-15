@@ -19,9 +19,16 @@ describe('<NumberOfEvents /> component', () => {
     expect(NumberOfEventsWrapper.find('.eventLabel').text()).toBe('Number of Events');
   });
 
-  test('assigns the state to the value of text input', () => {
+  test('renders text input correctly', () => {
     const NumberOfEventsWrapper = shallow(<NumberOfEvents />);
     const eventItems = NumberOfEventsWrapper.state('eventItems');
     expect(NumberOfEventsWrapper.find('.events').prop('value')).toBe(eventItems);
   });
+
+  test('change state when text input changes', () => {
+    const NumberOfEventsWrapper = shallow(<NumberOfEvents />);
+    const eventObject = { target: { value: '10' }};
+    NumberOfEventsWrapper.find('.events').simulate('change', eventObject);
+    expect(NumberOfEventsWrapper.state('eventItems')).toBe('10');
+  });  
 })
