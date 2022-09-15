@@ -13,4 +13,9 @@ describe('<NumberOfEvents /> component', () => {
     const NumberOfEventsWrapper = shallow(<NumberOfEvents />);
     expect(NumberOfEventsWrapper.find('.events').at(0).props().placeholder).toEqual('32');
   });
+
+  test('text input id to be "eventNumber"', () => {
+    const NumberOfEventsWrapper = shallow(<NumberOfEvents />);
+    expect(NumberOfEventsWrapper.find('.events').at(0).props().id).toEqual('eventNumber');
+  });
 })
