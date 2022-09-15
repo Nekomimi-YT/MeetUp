@@ -23,4 +23,10 @@ describe('<NumberOfEvents /> component', () => {
     const NumberOfEventsWrapper = shallow(<NumberOfEvents />);
     expect(NumberOfEventsWrapper.find('.eventLabel').text()).toBe('Number of Events');
   });
+
+  test('assigns the state to the value of text input', () => {
+    const NumberOfEventsWrapper = shallow(<NumberOfEvents />);
+    const eventItems = NumberOfEventsWrapper.state('eventItems');
+    expect(NumberOfEventsWrapper.find('.events').prop('value')).toBe(eventItems);
+  });
 })
