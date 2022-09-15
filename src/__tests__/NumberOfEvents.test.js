@@ -18,4 +18,9 @@ describe('<NumberOfEvents /> component', () => {
     const NumberOfEventsWrapper = shallow(<NumberOfEvents />);
     expect(NumberOfEventsWrapper.find('.events').at(0).props().id).toEqual('eventNumber');
   });
+
+  test('correct label for text input', () => {
+    const NumberOfEventsWrapper = shallow(<NumberOfEvents />);
+    expect(NumberOfEventsWrapper.find('.eventLabel').text()).toBe('Number of Events');
+  });
 })
