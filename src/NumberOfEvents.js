@@ -13,7 +13,6 @@ class NumberOfEvents extends Component {
       type="text"
       className="events"
       id="eventNumber"
-      placeholder="32"
       value={this.state.eventItems}
       />
     </div>
