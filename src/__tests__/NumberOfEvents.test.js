@@ -9,4 +9,8 @@ describe('<NumberOfEvents /> component', () => {
     expect(NumberOfEventsWrapper.find('.events')).toHaveLength(1);
   });
 
+  test('render text input placeholder 32', () => {
+    const NumberOfEventsWrapper = shallow(<NumberOfEvents />);
+    expect(NumberOfEventsWrapper.find('.events').at(0).props().placeholder).toEqual('32');
+  });
 })
