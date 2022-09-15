@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 class NumberOfEvents extends Component {
+  state = {
+    eventItems: 32
+  }
 
   render() {
     return (
@@ -11,6 +14,7 @@ class NumberOfEvents extends Component {
       className="events"
       id="eventNumber"
       placeholder="32"
+      value={this.state.eventItems}
       />
     </div>
     );
