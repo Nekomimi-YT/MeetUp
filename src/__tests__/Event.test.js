@@ -3,46 +3,28 @@ import { shallow } from 'enzyme';
 import Event from '../Event';
 import { mockData } from '../mock-data';
 
-describe('<Event /> component', () => {
-  
+describe('<Event /> component tests without props', () => {
+  let EventWrapper;
+  beforeEach( () => {
+    EventWrapper = shallow(<Event />);
+  });
+
   test('render collapsed event info container', () => {
-    const EventWrapper = shallow(<Event />);
     expect(EventWrapper.find('.collapsedDetails')).toHaveLength(1);
   });
 
-  test('render collapsed event info text', () => {
-    const event = mockData[0];
-    const EventWrapper = shallow(<Event event={event}/>); // can I somehow send EventList's event prop?
-    expect((EventWrapper.find('.collapsedDetails')).text()).toContain(event.summary);
-    expect((EventWrapper.find('.collapsedDetails')).text()).toContain(event.start.dateTime);
-    expect((EventWrapper.find('.collapsedDetails')).text()).toContain(event.start.timeZone);
-    expect((EventWrapper.find('.collapsedDetails')).text()).toContain(event.location);
-  });
-
-  test('render show details button', () => {
-    const EventWrapper = shallow(<Event />);
-    expect(EventWrapper.find('.DetailsButton')).toHaveLength(1);
-  });
-
-  test('render uncollapsed event info container when uncollapsed = true', () => {
-    const EventWrapper = shallow(<Event />);
+  test('render uncollapsed event container when uncollapsed = true', () => {
     expect(EventWrapper.find('.uncollapsedDetails')).toHaveLength(0);
     const handleCollapse = EventWrapper.handleCollapse;
     EventWrapper.find('.DetailsButton').simulate('click', handleCollapse);
     expect(EventWrapper.find('.uncollapsedDetails')).toHaveLength(1);
   });
 
-  test('render uncollapsed event info text when uncollapsed = true', () => {
-    const event = mockData[0];
-    const EventWrapper = shallow(<Event event={event}/>);
-    const handleCollapse = EventWrapper.handleCollapse;
-    EventWrapper.find('.DetailsButton').simulate('click', handleCollapse);
-    expect((EventWrapper.find('.uncollapsedDetails')).text()).toContain(event.htmlLink);
-    expect((EventWrapper.find('.uncollapsedDetails')).text()).toContain(event.description);
+  test('render show details button', () => {
+    expect(EventWrapper.find('.DetailsButton')).toHaveLength(1);
   });
 
   test('change state with handleCollapse method when button is clicked', () => {
-    const EventWrapper = shallow(<Event />);
     const handleCollapse = EventWrapper.handleCollapse;
     expect(EventWrapper.state('uncollapsed')).toBe(false); 
     expect(EventWrapper.state('buttonText')).toBe('Show details');
@@ -55,8 +37,29 @@ describe('<Event /> component', () => {
   });
 
   test('render state-specific innerText in button', () => {
-    const EventWrapper = shallow(<Event />);
-    const buttonText= EventWrapper.state('buttonText'); //returning an object => the whole state??
+    const buttonText= EventWrapper.state('buttonText'); 
     expect((EventWrapper.find('.DetailsButton')).text()).toContain(buttonText);
+  });
+})
+
+describe('<Event /> component tests with passed prop "event"', () => {
+  let EventWrapper;
+  const event = mockData[0];
+  beforeAll( () => {
+    EventWrapper = shallow(<Event event={event}/>);
+  });
+
+  test('render collapsed event info text', () => {
+    expect((EventWrapper.find('.collapsedDetails')).text()).toContain(event.summary);
+    expect((EventWrapper.find('.collapsedDetails')).text()).toContain(event.start.dateTime);
+    expect((EventWrapper.find('.collapsedDetails')).text()).toContain(event.start.timeZone);
+    expect((EventWrapper.find('.collapsedDetails')).text()).toContain(event.location);
+  });
+
+  test('render uncollapsed event info text when uncollapsed = true', () => {
+    const handleCollapse = EventWrapper.handleCollapse;
+    EventWrapper.find('.DetailsButton').simulate('click', handleCollapse);
+    expect((EventWrapper.find('.uncollapsedDetails')).text()).toContain(event.htmlLink);
+    expect((EventWrapper.find('.uncollapsedDetails')).text()).toContain(event.description);
   });
 })
