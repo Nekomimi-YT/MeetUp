@@ -5,8 +5,10 @@ import { mockData } from '../mock-data';
 
 describe('<Event /> component tests without props', () => {
   let EventWrapper;
-  beforeEach( () => {
-    EventWrapper = shallow(<Event />);
+  let event;  //but this isn't called here...
+  beforeAll( () => {
+    let event = mockData[0];
+    EventWrapper = shallow(<Event event={event}/>);
   });
 
   test('render collapsed event info container', () => {
@@ -26,6 +28,8 @@ describe('<Event /> component tests without props', () => {
 
   test('change state with handleCollapse method when button is clicked', () => {
     const handleCollapse = EventWrapper.handleCollapse;
+    EventWrapper.setState({ uncollapsed: false });
+    EventWrapper.setState({ buttonText: 'Show details' });
     expect(EventWrapper.state('uncollapsed')).toBe(false); 
     expect(EventWrapper.state('buttonText')).toBe('Show details');
     EventWrapper.find('.DetailsButton').simulate('click', handleCollapse);
@@ -42,10 +46,11 @@ describe('<Event /> component tests without props', () => {
   });
 })
 
-describe('<Event /> component tests with passed prop "event"', () => {
+describe('<Event /> component tests without props', () => {
   let EventWrapper;
-  const event = mockData[0];
-  beforeAll( () => {
+  let event;
+  beforeEach( () => {
+    event = mockData[0];
     EventWrapper = shallow(<Event event={event}/>);
   });
 
