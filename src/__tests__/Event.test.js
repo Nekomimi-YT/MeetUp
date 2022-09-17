@@ -5,7 +5,6 @@ import { mockData } from '../mock-data';
 
 describe('<Event /> component tests without props', () => {
   let EventWrapper;
-  let event;  //but this isn't called here...
   beforeAll( () => {
     let event = mockData[0];
     EventWrapper = shallow(<Event event={event}/>);
