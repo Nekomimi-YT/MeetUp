@@ -10,7 +10,7 @@ class Event extends Component {
   
   handleCollapse () { 
     const { uncollapsed } = this.state;
-    if (uncollapsed == false) {
+    if (uncollapsed === false) {
       this.setState({ uncollapsed: true });
       this.setState({ buttonText: 'Hide details' });
     } else {
