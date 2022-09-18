@@ -8,13 +8,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: []
+      events: [],
+      locations: []
     }
   }
   render() {
     return (
       <div className="App">
-        <CitySearch />
+        <CitySearch locations={ this.state.locations }/>
         <NumberOfEvents />
         <EventList events={ this.state.events } />
       </div>
