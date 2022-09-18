@@ -5,12 +5,18 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      events: []
+    }
+  }
   render() {
     return (
       <div className="App">
         <CitySearch />
         <NumberOfEvents />
-        <EventList />
+        <EventList events={ this.state.events } />
       </div>
     );
   }
