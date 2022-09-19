@@ -20,19 +20,25 @@ class Event extends Component {
   }
 
   render() {
-    const { event } = this.props;
+    const { 
+      summary,
+      start,
+      location,
+      htmlLink,
+      description
+    } = this.props.event;
     const { buttonText, uncollapsed } = this.state;
     return <div>
       <div className="collapsedDetails">
-        <h3>{event.summary}</h3>
-        <p>{event.start.dateTime} {event.start.timeZone}</p>
-        <p>{event.location}</p>
+        <h3>{summary}</h3>
+        <p>{start.dateTime} {start.timeZone}</p>
+        <p>{location}</p>
       </div>
       {uncollapsed ? ( 
         <div className="uncollapsedDetails">
           <h4>About this event</h4>
-          {event.htmlLink} See details on Google Calendar
-          <p>{event.description}</p>
+          {htmlLink} See details on Google Calendar
+          <p>{description}</p>
         </div>
         ) : null
       }
