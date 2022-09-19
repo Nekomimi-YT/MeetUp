@@ -3,7 +3,7 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import { getEvents } from './api';
+import { getEvents, extractLocations } from './api';
 
 class App extends Component {
   constructor(props) {
