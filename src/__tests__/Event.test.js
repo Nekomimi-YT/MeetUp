@@ -3,8 +3,8 @@ import { shallow } from 'enzyme';
 import Event from '../Event';
 import { mockData } from '../mock-data';
 
-describe('<Event /> component tests without props', () => {
-  let EventWrapper;
+describe('<Event /> component', () => {
+  let event, EventWrapper;
   beforeAll( () => {
     let event = mockData[0];
     EventWrapper = shallow(<Event event={event}/>);
@@ -43,15 +43,14 @@ describe('<Event /> component tests without props', () => {
     const buttonText= EventWrapper.state('buttonText'); 
     expect((EventWrapper.find('.DetailsButton')).text()).toContain(buttonText);
   });
-})
+/*})
 
 describe('<Event /> component tests without props', () => {
-  let EventWrapper;
-  let event;
+  let event, EventWrapper;
   beforeEach( () => {
     event = mockData[0];
     EventWrapper = shallow(<Event event={event}/>);
-  });
+  });*/
 
   test('render collapsed event info text', () => {
     expect((EventWrapper.find('.collapsedDetails')).text()).toContain(event.summary);
