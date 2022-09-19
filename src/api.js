@@ -5,6 +5,7 @@
 
 import axios from 'axios';
 import { mockData } from './mock-data';
+import NProgress from 'nprogress';
 
 export const extractLocations = (events) => {
  let extractLocations = events.map((event) => event.location);
@@ -23,7 +24,28 @@ const checkToken = async (accessToken) => {
 };
 
 export const getEvents = async () => {
-  return mockData;
+  NProgress.start();
+
+  if (window.location.href.startsWith('http://localhost')) {
+    NProgress.done();
+    return mockData;
+  }
+  
+  const token = await getAccessToken();
+
+  if (token) {
+    removeQuery();
+    const url = 'https://nzmmemps58.execute-api.us-east-1.amazonaws.com/dev/api/get-events' + '/' + token;
+    const result = await axios.get(url);
+    if (result.data) {
+      var locations = extractLocations(result.data.events);
+      localStorage.setItem("lastEvents", JSON.stringify(result.data));
+      localStorage.setItem("locations", JSON.stringify(locations));
+    }
+    NProgress.done();
+    return result.data.events;
+  }
+
 };
 
 export const getAccessToken = async () => {
