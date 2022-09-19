@@ -39,4 +39,12 @@ describe('<CitySearch /> component', () => {
       expect(CitySearchWrapper.find('.suggestions li').at(i).text()).toBe(suggestions[i]);
     }
   });
+
+  test("selecting a suggestion should change query state", () => {
+    CitySearchWrapper.setState({
+      query: 'Berlin'  });
+    const suggestions = CitySearchWrapper.state('suggestions');
+    CitySearchWrapper.find('.suggestions li').at(1).simulate('click');
+    expect(CitySearchWrapper.state("query")).toBe(suggestions[1]);
+  });
 });
