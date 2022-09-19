@@ -20,7 +20,7 @@ class Event extends Component {
   }
 
   render() {
-    const { event } = this.props; //unable to use event in place of mockData[0]
+    const { event } = this.props;
     const { buttonText, uncollapsed } = this.state;
     return <div>
       <div className="collapsedDetails">
