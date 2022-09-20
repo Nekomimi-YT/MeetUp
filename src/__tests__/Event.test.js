@@ -6,7 +6,7 @@ import { mockData } from '../mock-data';
 describe('<Event /> component', () => {
   let event, EventWrapper;
   beforeAll( () => {
-    let event = mockData[0];
+    event = mockData[0];
     EventWrapper = shallow(<Event event={event}/>);
   });
 
@@ -43,15 +43,7 @@ describe('<Event /> component', () => {
     const buttonText= EventWrapper.state('buttonText'); 
     expect((EventWrapper.find('.DetailsButton')).text()).toContain(buttonText);
   });
-/*})
-
-describe('<Event /> component tests without props', () => {
-  let event, EventWrapper;
-  beforeEach( () => {
-    event = mockData[0];
-    EventWrapper = shallow(<Event event={event}/>);
-  });*/
-
+  
   test('render collapsed event info text', () => {
     expect((EventWrapper.find('.collapsedDetails')).text()).toContain(event.summary);
     expect((EventWrapper.find('.collapsedDetails')).text()).toContain(event.start.dateTime);
