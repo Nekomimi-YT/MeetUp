@@ -74,4 +74,17 @@ describe('<App /> integration', () => {
     expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(AppnumberOfEventsState);
     AppWrapper.unmount();
   });
+
+  test('change number of events displayed after user changes number of events', () => {
+    const AppWrapper = mount(<App />);
+    AppWrapper.instance().updateEvents = jest.fn();
+    AppWrapper.instance().forceUpdate();  //forces the function to fire
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    NumberOfEventsWrapper.instance().handleInputChanged({
+      target: { value: 1 }, //I only have 2 events
+    });
+    expect(AppWrapper.instance().updateEvents).toHaveBeenCalledTimes(1);
+    expect(AppWrapper.instance().updateEvents).toHaveBeenCalledWith(null, 1);
+    AppWrapper.unmount();
+  });
 });
