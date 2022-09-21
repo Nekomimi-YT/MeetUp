@@ -28,6 +28,6 @@ describe('<NumberOfEvents /> component', () => {
   test('change state when text input changes', () => {
     let eventObject = { target: { value: '10' }};
     NumberOfEventsWrapper.find('.events').simulate('change', eventObject);
-    expect(NumberOfEventsWrapper.state('eventItems')).toBe('10');
+    expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe('10');
   });  
 })
