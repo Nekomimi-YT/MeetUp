@@ -20,7 +20,7 @@ class App extends Component {
     this.mounted = true;
     getEvents().then((events) => {
       if (this.mounted) {
-        this.setState({ events, locations: extractLocations(events) });// events: numberofEvents(events)
+        this.setState({ events, locations: extractLocations(events) });
       }
     });
   }
@@ -31,12 +31,23 @@ class App extends Component {
 
   updateEvents = (location, eventCount) => {
     getEvents().then((events) => {
-      const locationEvents = (location === 'all') ?
-        events :
-        events.filter((event) => event.location === location);
-      this.setState({
-        events: locationEvents
-      });
+      const { numberOfEvents } = this.state;
+      if (location) {
+        const locationEvents = (location === 'all') ?
+          events :
+          events.filter((event) => event.location === location);
+        const eventItems = locationEvents.slice(0, numberOfEvents);
+        return this.setState({ events: eventItems });
+      } else {
+        const locationEvents = (location === 'all') ?
+          events :
+          events.filter((event) => event.location === location);
+        const eventItems = locationEvents.slice(0, eventCount);
+        return this.setState({
+          events: eventItems,
+          numberOfEvents: eventCount
+        });
+      }
     });
   }
 
@@ -63,9 +74,16 @@ class App extends Component {
     const { events, locations, numberOfEvents } = this.state;
     return (
       <div className="App">
-        <CitySearch locations={ locations } updateEvents={ this.updateEvents }/>
-        <NumberOfEvents updateEvents={ this.updateEvents } numberOfEvents={ numberOfEvents }/>  {/*Pass function as prop to return eventCount*/}
-        <EventList events={ events } />
+        <h1>MeetUp Events</h1>
+        <div>
+          <CitySearch locations={ locations } updateEvents={ this.updateEvents }/>
+        </div>
+        <div>
+          <NumberOfEvents updateEvents={ this.updateEvents } numberOfEvents={ numberOfEvents }/> 
+        </div>
+        <div>
+          <EventList events={ events } />
+        </div>
       </div>
     );
   }
