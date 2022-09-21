@@ -27,6 +27,11 @@ describe('<App /> component', () => {
 });
 
 describe('<App /> integration', () => {
+  let AppWrapper;
+  beforeAll( () => {
+    AppWrapper = mount(<App />);
+  });
+  
   test('App passes "events" state as a prop to EventList', () => {
     const AppWrapper = mount(<App />);
     const AppEventsState = AppWrapper.state('events');
@@ -78,13 +83,28 @@ describe('<App /> integration', () => {
   test('change number of events displayed after user changes number of events', () => {
     const AppWrapper = mount(<App />);
     AppWrapper.instance().updateEvents = jest.fn();
-    AppWrapper.instance().forceUpdate();  //forces the function to fire
+    AppWrapper.instance().forceUpdate();  //forces a re-render
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
     NumberOfEventsWrapper.instance().handleInputChanged({
       target: { value: 1 }, //I only have 2 events
     });
     expect(AppWrapper.instance().updateEvents).toHaveBeenCalledTimes(1);
     expect(AppWrapper.instance().updateEvents).toHaveBeenCalledWith(null, 1);
+    AppWrapper.unmount();
+  });
+
+  test('render list of events using mockData', () => {
+    const AppWrapper = mount(<App />);
+    AppWrapper.setState({ events: mockData });
+    expect(AppWrapper.find('.events')).toHaveLength(mockData.length);
+    AppWrapper.unmount();
+  });
+
+  test('change state after get list of events', async () => {
+    const AppWrapper = mount(<App />);
+    AppWrapper.instance().updateEvents(null, 1);
+    await AppWrapper.update();
+    expect(await AppWrapper.state('events')).toHaveLength(1); // is this the right test?
     AppWrapper.unmount();
   });
 });
