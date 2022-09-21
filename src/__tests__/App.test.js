@@ -31,9 +31,8 @@ describe('<App /> integration', () => {
   beforeAll( () => {
     AppWrapper = mount(<App />);
   });
-  
+
   test('App passes "events" state as a prop to EventList', () => {
-    const AppWrapper = mount(<App />);
     const AppEventsState = AppWrapper.state('events');
     expect(AppEventsState).not.toEqual(undefined);
     expect(AppWrapper.find(EventList).props().events).toEqual(AppEventsState);
@@ -41,7 +40,6 @@ describe('<App /> integration', () => {
   });
 
   test('App passes "locations" state as a prop to CitySearch', () => {
-    const AppWrapper = mount(<App />);
     const AppLocationsState = AppWrapper.state('locations');
     expect(AppLocationsState).not.toEqual(undefined);
     expect(AppWrapper.find(CitySearch).props().locations).toEqual(AppLocationsState);
@@ -49,7 +47,6 @@ describe('<App /> integration', () => {
   });
 
   test('get list of events matching the city selected by the user', async () => {
-    const AppWrapper = mount(<App />);
     const CitySearchWrapper = AppWrapper.find(CitySearch);
     const locations = extractLocations(mockData);
     CitySearchWrapper.setState({ suggestions: locations });
@@ -64,7 +61,6 @@ describe('<App /> integration', () => {
   });
 
   test('get list of all events when user selects "See all cities"', async () => {
-    const AppWrapper = mount(<App />);
     const suggestionItems = AppWrapper.find(CitySearch).find('.suggestions li');
     await suggestionItems.at(suggestionItems.length - 1).simulate('click');
     const allEvents = await getEvents();
@@ -73,7 +69,6 @@ describe('<App /> integration', () => {
   });
 
   test('App passes "numberOfEvents" state as a prop to NumberOfEvents', () => {
-    const AppWrapper = mount(<App />);
     const AppnumberOfEventsState = AppWrapper.state('numberOfEvents');
     expect(AppnumberOfEventsState).not.toEqual(undefined);
     expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(AppnumberOfEventsState);
@@ -81,7 +76,6 @@ describe('<App /> integration', () => {
   });
 
   test('change number of events displayed after user changes number of events', () => {
-    const AppWrapper = mount(<App />);
     AppWrapper.instance().updateEvents = jest.fn();
     AppWrapper.instance().forceUpdate();  //forces a re-render
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
@@ -94,14 +88,12 @@ describe('<App /> integration', () => {
   });
 
   test('render list of events using mockData', () => {
-    const AppWrapper = mount(<App />);
     AppWrapper.setState({ events: mockData });
     expect(AppWrapper.find('.events')).toHaveLength(mockData.length);
     AppWrapper.unmount();
   });
 
   test('change state after get list of events', async () => {
-    const AppWrapper = mount(<App />);
     AppWrapper.instance().updateEvents(null, 1);
     await AppWrapper.update();
     expect(await AppWrapper.state('events')).toHaveLength(1); // is this the right test?
