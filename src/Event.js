@@ -28,7 +28,7 @@ class Event extends Component {
       description
     } = this.props.event;
     const { buttonText, uncollapsed } = this.state;
-    return <div>
+    return <div className="event">
       <div className="collapsedDetails">
         <h3>{summary}</h3>
         <p>{start.dateTime} {start.timeZone}</p>
@@ -42,7 +42,7 @@ class Event extends Component {
         </div>
         ) : null
       }
-      <button className="DetailsButton" onClick={() => {this.handleCollapse()}}>{buttonText}</button>
+      <button className="details-btn" onClick={() => {this.handleCollapse()}}>{buttonText}</button>
     </div>
   }
 }
