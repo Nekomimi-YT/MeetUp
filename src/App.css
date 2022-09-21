@@ -2,6 +2,7 @@
 .App {
   text-align: center;
   padding: 2% 5%;
+  background: rgb(236, 237, 152);
 }
 
 .App * {
@@ -14,7 +15,8 @@ ul {
 }
 
 p {
-  margin: 5px 0;
+  margin: 5px;
+  padding-bottom: 3px;
 }
 
 .display-none {
@@ -80,9 +82,11 @@ input[type="number"] {
   padding: 10px 10px 35px;
   margin-bottom: 10px;
   text-align: left;
-  border: 1px solid #ccc;
+  border: 1px solid darkgray;
   border-radius: 4px;
   position: relative;
+  background: lightsteelblue
+
 }
 
 .details-btn {
@@ -93,6 +97,7 @@ input[type="number"] {
   border-radius: 4px;
   outline: none;
   cursor: pointer;
+  background-color: white !important;
 }
 
 .name {
