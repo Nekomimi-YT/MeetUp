@@ -17,12 +17,12 @@ describe('<Event /> component', () => {
   test('render uncollapsed event container when uncollapsed = true', () => {
     expect(EventWrapper.find('.uncollapsedDetails')).toHaveLength(0);
     const handleCollapse = EventWrapper.handleCollapse;
-    EventWrapper.find('.DetailsButton').simulate('click', handleCollapse);
+    EventWrapper.find('.details-btn').simulate('click', handleCollapse);
     expect(EventWrapper.find('.uncollapsedDetails')).toHaveLength(1);
   });
 
   test('render show details button', () => {
-    expect(EventWrapper.find('.DetailsButton')).toHaveLength(1);
+    expect(EventWrapper.find('.details-btn')).toHaveLength(1);
   });
 
   test('change state with handleCollapse method when button is clicked', () => {
@@ -31,17 +31,17 @@ describe('<Event /> component', () => {
     EventWrapper.setState({ buttonText: 'Show details' });
     expect(EventWrapper.state('uncollapsed')).toBe(false); 
     expect(EventWrapper.state('buttonText')).toBe('Show details');
-    EventWrapper.find('.DetailsButton').simulate('click', handleCollapse);
+    EventWrapper.find('.details-btn').simulate('click', handleCollapse);
     expect(EventWrapper.state('uncollapsed')).toBe(true);
     expect(EventWrapper.state('buttonText')).toBe('Hide details');
-    EventWrapper.find('.DetailsButton').simulate('click', handleCollapse);
+    EventWrapper.find('.details-btn').simulate('click', handleCollapse);
     expect(EventWrapper.state('uncollapsed')).toBe(false); 
     expect(EventWrapper.state('buttonText')).toBe('Show details');
   });
 
   test('render state-specific innerText in button', () => {
     const buttonText= EventWrapper.state('buttonText'); 
-    expect((EventWrapper.find('.DetailsButton')).text()).toContain(buttonText);
+    expect((EventWrapper.find('.details-btn')).text()).toContain(buttonText);
   });
   
   test('render collapsed event info text', () => {
@@ -53,7 +53,7 @@ describe('<Event /> component', () => {
 
   test('render uncollapsed event info text when uncollapsed = true', () => {
     const handleCollapse = EventWrapper.handleCollapse;
-    EventWrapper.find('.DetailsButton').simulate('click', handleCollapse);
+    EventWrapper.find('.details-btn').simulate('click', handleCollapse);
     expect((EventWrapper.find('.uncollapsedDetails')).text()).toContain(event.htmlLink);
     expect((EventWrapper.find('.uncollapsedDetails')).text()).toContain(event.description);
   });
