@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 class Event extends Component {
   constructor(props) {
@@ -27,11 +28,12 @@ class Event extends Component {
       htmlLink,
       description
     } = this.props.event;
+    const eventStart = moment(start.dateTime, "YYYY-MM-DD HH:mm").toDate();
     const { buttonText, uncollapsed } = this.state;
     return <div className="event">
       <div className="collapsedDetails">
         <h3>{summary}</h3>
-        <p>{start.dateTime} {start.timeZone}</p>
+        <p>{`${eventStart}`}</p>
         <p>{location}</p>
       </div>
       {uncollapsed ? ( 
