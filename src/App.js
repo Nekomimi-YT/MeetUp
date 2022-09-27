@@ -12,6 +12,7 @@ class App extends Component {
     this.state = {
       events: [],
       locations: [],
+      currentLocation: 'all',
       numberOfEvents: 32
     }
   }
@@ -31,17 +32,21 @@ class App extends Component {
 
   updateEvents = (location, eventCount) => {
     getEvents().then((events) => {
-      const { numberOfEvents } = this.state;
+      const { currentLocation, numberOfEvents } = this.state;
       if (location) {
-        const locationEvents = (location === 'all') ?
-          events :
-          events.filter((event) => event.location === location);
+        const locationEvents = 
+          location === 'all' 
+          ? events 
+          : events.filter((event) => event.location === location);
         const eventItems = locationEvents.slice(0, numberOfEvents);
-        return this.setState({ events: eventItems });
+        return this.setState({ 
+          events: eventItems,
+          currentLocation: location });
       } else {
-        const locationEvents = (location === 'all') ?
-          events :
-          events.filter((event) => event.location === location);
+        const locationEvents = 
+          currentLocation === 'all' 
+          ? events 
+          : events.filter((event) => event.location === currentLocation);
         const eventItems = locationEvents.slice(0, eventCount);
         return this.setState({
           events: eventItems,
@@ -50,25 +55,6 @@ class App extends Component {
       }
     });
   }
-
-  /*return state (eventCount from NumberOfEvents, slice the first numOfEvents, assign to event state)
-  setNumberOfEvents = (numOfEvents) => {
-    getEvents().then((events) => {
-      if (numOfEvents <= events.length) {
-        this.setState ({
-          events: events.slice(0, numOfEvents)
-        });
-      } else if (numOfEvents == null) { //when the input is blank ??
-        this.setState ({
-          events: events.slice(0, 0)
-        });
-      } else {
-        this.setState ({
-          events: events.slice(0, 32) //max number of events shown is fixed at 32
-        });
-      }
-    });
-  }*/
 
   render() {
     const { events, locations, numberOfEvents } = this.state;
