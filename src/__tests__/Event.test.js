@@ -51,6 +51,6 @@ describe('<Event /> component', () => {
   test('render uncollapsed event info text when uncollapsed = true', () => {
     const handleCollapse = EventWrapper.handleCollapse;
     EventWrapper.find('.details-btn').simulate('click', handleCollapse);
-    expect(EventWrapper.find('.uncollapsedDetails').children()).toHaveLength(3);
+    expect(EventWrapper.find('.uncollapsedDetails').children()).toHaveLength(4);
   });
 })
