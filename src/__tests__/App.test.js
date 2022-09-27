@@ -23,7 +23,14 @@ describe('<App /> component', () => {
 
   test('render NumberOfEvents component', () => {
     expect(AppWrapper.find(NumberOfEvents)).toHaveLength(1);
-  })
+  });
+
+  test('change events state after instance of updateEvents', async () => {
+    AppWrapper.instance().updateEvents('');
+    await AppWrapper.update();
+    expect(await AppWrapper.state('events')).toStrictEqual(mockData);
+    AppWrapper.unmount();
+  });
 });
 
 describe('<App /> integration', () => {
@@ -75,31 +82,23 @@ describe('<App /> integration', () => {
     AppWrapper.unmount();
   });
 
-  test('change number of events displayed after user changes number of events', () => {
+  test ('update # of events when updateEvents is called when user changes # of events value', () => {
     const AppWrapper = mount(<App />);
     AppWrapper.instance().updateEvents = jest.fn();
     AppWrapper.instance().forceUpdate();  //forces a re-render
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
     NumberOfEventsWrapper.instance().handleInputChanged({
-      target: { value: 1 }, //I only have 2 events
+      target: { value: 2 }, //I only have 2 events
     });
     expect(AppWrapper.instance().updateEvents).toHaveBeenCalledTimes(1);
-    expect(AppWrapper.instance().updateEvents).toHaveBeenCalledWith(null, 1);
+    expect(AppWrapper.instance().updateEvents).toHaveBeenCalledWith(null, 2);
     AppWrapper.unmount();
   });
 
-  test('render list of events using mockData', () => {
+  test('render list of events using only mockData and event state', () => {
     const AppWrapper = mount(<App />);
     AppWrapper.setState({ events: mockData });
-    expect(AppWrapper.find('.events')).toHaveLength(mockData.length);
-    AppWrapper.unmount();
-  });
-
-  test('change state after get list of events', async () => {
-    const AppWrapper = mount(<App />);
-    AppWrapper.instance().updateEvents('');
-    await AppWrapper.update();
-    expect(await AppWrapper.state('events')).toEqual(mockData); // is this the right test?
+    expect(AppWrapper.state('events')).toHaveLength(mockData.length);
     AppWrapper.unmount();
   });
 });
