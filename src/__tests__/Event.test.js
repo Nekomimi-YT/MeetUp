@@ -45,16 +45,12 @@ describe('<Event /> component', () => {
   });
   
   test('render collapsed event info text', () => {
-    expect((EventWrapper.find('.collapsedDetails')).text()).toContain(event.summary);
-    expect((EventWrapper.find('.collapsedDetails')).text()).toContain(event.start.dateTime);
-    expect((EventWrapper.find('.collapsedDetails')).text()).toContain(event.start.timeZone);
-    expect((EventWrapper.find('.collapsedDetails')).text()).toContain(event.location);
+    expect(EventWrapper.find('.collapsedDetails').children()).toHaveLength(3);
   });
 
   test('render uncollapsed event info text when uncollapsed = true', () => {
     const handleCollapse = EventWrapper.handleCollapse;
     EventWrapper.find('.details-btn').simulate('click', handleCollapse);
-    expect((EventWrapper.find('.uncollapsedDetails')).text()).toContain(event.htmlLink);
-    expect((EventWrapper.find('.uncollapsedDetails')).text()).toContain(event.description);
+    expect(EventWrapper.find('.uncollapsedDetails').children()).toHaveLength(3);
   });
 })
