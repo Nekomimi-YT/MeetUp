@@ -20,7 +20,8 @@ defineFeature(feature, test => {
     });
 
     then('the user should see all upcoming events', () => {
-
+      AppWrapper.update();
+      expect(AppWrapper.find('.event')).toHaveLength(mockData.length);
     });
   });
 
