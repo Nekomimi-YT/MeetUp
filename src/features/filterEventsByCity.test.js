@@ -1,4 +1,8 @@
 import { loadFeature, defineFeature } from 'jest-cucumber';
+import React from 'react';
+import { mount } from 'enzyme';
+import App from '../App';
+import { mockData } from '../mock-data';
 
 const feature = loadFeature('./src/features/filterEventsByCity.feature');
 
@@ -9,8 +13,9 @@ defineFeature(feature, test => {
 
     });
 
-    
+    let AppWrapper;
     when('the user opens the app', () => {
+      AppWrapper = mount(<App />);
 
     });
 
