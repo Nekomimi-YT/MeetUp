@@ -8,11 +8,17 @@ import Event from '../Event';
 const feature = loadFeature('./src/features/showHideAnEventsDetails.feature');
 
 defineFeature(feature, test => {
+  let EventWrapper, event;
+  
+  beforeAll( () => {
+    event = mockData[0];
+  });
+
+  
+
   test('An event element is collapsed by default', ({ given, when, then }) => {
-    let EventWrapper;
-    let event = mockData[0];
     given('user is using the app within its default setting', () => {
-      EventWrapper = mount(<Event event={event}/>);
+      EventWrapper = shallow(<Event event={event}/>);
     });
 
     when('the user observes the event element', () => {
@@ -26,10 +32,9 @@ defineFeature(feature, test => {
   });
 
   test('User can expand an event to see its details', ({ given, when, then }) => {
-    let EventWrapper;
-    let event = mockData[0];
+
     given('a user wants to see more details about an event', () => {
-      EventWrapper = mount(<Event event={event}/>);
+      EventWrapper = shallow(<Event event={event}/>);
     });
 
     when('the user interacts with the event element', () => {
@@ -43,12 +48,10 @@ defineFeature(feature, test => {
   });
 
   test('User can collapse an event to hide its details', ({ given, when, then }) => {
-    let EventWrapper;
-    let event = mockData[0];
     given('a user wants to minimize an event details element', () => {
-      EventWrapper = mount(<Event event={event}/>);
-      const handleCollapse = EventWrapper.handleCollapse;
-      EventWrapper.find('.details-btn').simulate('click', handleCollapse);
+     EventWrapper = shallow(<Event event={event}/>);
+     const handleCollapse = EventWrapper.handleCollapse;
+     EventWrapper.find('.details-btn').simulate('click', handleCollapse);
     });
 
     when('the user interacts with the element', () => {
