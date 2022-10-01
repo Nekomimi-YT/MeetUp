@@ -14,8 +14,6 @@ defineFeature(feature, test => {
     event = mockData[0];
   });
 
-  
-
   test('An event element is collapsed by default', ({ given, when, then }) => {
     given('user is using the app within its default setting', () => {
       EventWrapper = shallow(<Event event={event}/>);
