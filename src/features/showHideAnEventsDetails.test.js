@@ -1,11 +1,16 @@
 import { loadFeature, defineFeature } from 'jest-cucumber';
+import React from 'react';
+import { mount, shallow } from 'enzyme';
+import App from '../App';
+import { mockData } from '../mock-data';
 
 const feature = loadFeature('./src/features/showHideAnEventsDetails.feature');
 
 defineFeature(feature, test => {
   test('An event element is collapsed by default', ({ given, when, then }) => {
+    let AppWrapper;
     given('user is using the app within its default setting', () => {
-
+      AppWrapper = mount(<App />);
     });
 
     when('the user observes the event element', () => {
@@ -13,7 +18,9 @@ defineFeature(feature, test => {
     });
 
     then('the element is collapsed (details not showing)', () => {
-
+      AppWrapper.update();
+      expect(AppWrapper.find('.collapsedDetails')).toHaveLength(2);
+      expect(AppWrapper.find('.uncollapsedDetails')).toHaveLength(0);
     });
   });
 
