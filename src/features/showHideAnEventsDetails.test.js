@@ -20,7 +20,6 @@ defineFeature(feature, test => {
     });
 
     then('the element is collapsed (details not showing)', () => {
-      EventWrapper.update();
       expect(EventWrapper.find('.collapsedDetails')).toHaveLength(1);
       expect(EventWrapper.find('.uncollapsedDetails')).toHaveLength(0);
     });
@@ -34,28 +33,31 @@ defineFeature(feature, test => {
     });
 
     when('the user interacts with the event element', () => {
-    EventWrapper.update();
     const handleCollapse = EventWrapper.handleCollapse;
     EventWrapper.find('.details-btn').simulate('click', handleCollapse);
     });
 
     then('it should expand to show details', () => {
-      EventWrapper.update();
       expect(EventWrapper.find('.uncollapsedDetails')).toHaveLength(1);
     });
   });
 
   test('User can collapse an event to hide its details', ({ given, when, then }) => {
+    let EventWrapper;
+    let event = mockData[0];
     given('a user wants to minimize an event details element', () => {
-
+      EventWrapper = mount(<Event event={event}/>);
+      const handleCollapse = EventWrapper.handleCollapse;
+      EventWrapper.find('.details-btn').simulate('click', handleCollapse);
     });
 
     when('the user interacts with the element', () => {
-
+      const handleCollapse = EventWrapper.handleCollapse;
+      EventWrapper.find('.details-btn').simulate('click', handleCollapse);
     });
 
     then('it collapses back to the default setting and hides details', () => {
-
+      expect(EventWrapper.find('.uncollapsedDetails')).toHaveLength(0);
     });
   });
 });
