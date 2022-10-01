@@ -42,17 +42,22 @@ defineFeature(feature, test => {
   });
 
   test('User can select a city from the suggested list.', ({ given, when, then }) => {
-    given('user was typing “Hamburg” in the city textbox and the suggestions list is showing', () => {
-
+    let AppWrapper;
+    given('user was typing “Berlin” in the city textbox and the suggestions list is showing', async () => {
+      AppWrapper = await mount(<App />);
+      AppWrapper.find('.city').simulate('change', { target: { value: 'Berlin' } });
+      AppWrapper.update();
+      expect(AppWrapper.find('.suggestions li')).toHaveLength(2);
     });
 
-    when('the user selects a city (e.g.,“Hamburg”) from the list', () => {
-
+    when('the user selects a city (e.g.,“Berlin”) from the list', () => {
+      AppWrapper.find('.suggestions li').at(0).simulate('click');
     });
 
     then('their city should be changed to the chosen city and the user should receive a list of upcoming events from that city', () => {
-
+      const CitySearchWrapper = AppWrapper.find(CitySearch);
+      expect(CitySearchWrapper.state('query')).toBe('Berlin, Germany');
+      expect(AppWrapper.find('.event')).toHaveLength(mockData.length);
     });
   });
-
 });
