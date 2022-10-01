@@ -43,7 +43,7 @@ describe('Filter events by city', () => {
   let browser;
   let page;
   beforeAll(async () => {
-    jest.setTimeout(50000);
+    jest.setTimeout(100000);
     browser = await puppeteer.launch();
     /*browser = await puppeteer.launch({
       headless: false,
@@ -68,7 +68,7 @@ describe('Filter events by city', () => {
   });
 
   test('User should see a list of suggestions when they search for a city', async () => {
-    await page.type('.city', 'Berlin', { delay: 300 }); //type slower than user
+    await page.type('.city', 'Berlin', { delay: 100 }); //type slower than user
     const suggestions = await page.$$eval(
       '.suggestions li',
       (element) => element.length
@@ -78,7 +78,7 @@ describe('Filter events by city', () => {
 
   test('User can select a city from the suggested list', async () => {
     await page.reload();
-    await page.type('.city', 'Berlin', { delay: 300 }); //type slower than user
+    await page.type('.city', 'Berlin', { delay: 100 }); //type slower than user
     await page.click('.suggestions li');
     const events = await page.$$eval(
       '.event',
