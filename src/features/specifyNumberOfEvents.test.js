@@ -32,11 +32,21 @@ defineFeature(feature, test => {
     });
 
     when('the user types the preferred number into the text box', () => {
-
+      NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+      let eventObject = { target: { value: '2' }};
+      NumberOfEventsWrapper.find('.events').simulate('change', eventObject);
+      expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe('2');
     });
 
     then('the preferred number of events is displayed', () => {
-
+      AppWrapper.instance().updateEvents = jest.fn();
+      AppWrapper.instance().forceUpdate(); 
+      NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+      NumberOfEventsWrapper.instance().handleInputChanged({
+        target: { value: 2 }
+      });
+      expect(AppWrapper.instance().updateEvents).toHaveBeenCalledWith(null, 2);
+      expect(AppWrapper.state('events')).toHaveLength(mockData.length);
     });
   });
 });
