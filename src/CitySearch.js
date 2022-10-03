@@ -30,8 +30,10 @@ class CitySearch extends Component {
   render() {
     return (
       <div className="CitySearch">
+        <label for="citySearch">Find your City</label>
         <input
         type="text"
+        id="citySearch"
         className="city"
         value={this.state.query}
         onChange={this.handleInputChanged}
