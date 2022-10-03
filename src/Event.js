@@ -38,7 +38,7 @@ class Event extends Component {
       </div>
       {uncollapsed ? ( 
         <div className="uncollapsedDetails">
-          <strong><a href={htmlLink}>See details on Google Calendar</a></strong><br />
+          <strong><a className="calendar-link" href={htmlLink}>Details on Google Calendar</a></strong><br />
           <h4>More about this event:</h4>
           <p>{description}</p>
         </div>

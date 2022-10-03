@@ -87,10 +87,11 @@ input[type="number"] {
   padding: 10px 10px 35px;
   margin-bottom: 10px;
   text-align: left;
-  border: 1px solid darkgray;
+  /*border: 1px solid darkgray;*/
+  box-shadow: 8px 10px 16px -12px rgba(0, 0, 0, 0.75);
   border-radius: 4px;
   position: relative;
-  background: lightsteelblue
+  background: rgb(167, 197, 236)
 
 }
 
@@ -103,6 +104,10 @@ input[type="number"] {
   outline: none;
   cursor: pointer;
   background-color: white !important;
+}
+
+.calendar-link {
+  color: rgb(241, 59, 39);
 }
 
 .name {
