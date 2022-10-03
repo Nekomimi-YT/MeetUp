@@ -1,5 +1,4 @@
 import puppeteer from 'puppeteer';
-import { mockData } from '../mock-data';
 
 describe('show/hide an event details', () => {
   let browser;
