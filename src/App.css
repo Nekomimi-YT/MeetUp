@@ -70,7 +70,7 @@ input[type="number"] {
 .suggestions > li {
   text-align: left;
   padding: 8px 6px 8px 10px;
-  background-color: #eee;
+  background-color: rgb(244, 244, 237);
   cursor: default;
 }
 
