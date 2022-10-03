@@ -80,7 +80,7 @@ input[type="number"] {
 }
 
 .suggestions > li:hover {
-  background-color: #bcdcdb;
+  background-color: rgb(167, 197, 236);
 }
 
 .event {
