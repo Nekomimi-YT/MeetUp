@@ -24,6 +24,10 @@ h3 {
   font-weight: 300;
 }
 
+h4 {
+  padding-left: 3px;
+}
+
 p, label {
   margin: 5px;
   padding-bottom: 2px;
@@ -113,6 +117,7 @@ input[type="number"] {
 
 .calendar-link {
   color: rgb(241, 59, 39);
+  padding-left: 3px;
 }
 
 .name {
