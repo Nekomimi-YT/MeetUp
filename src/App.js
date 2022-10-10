@@ -25,6 +25,9 @@ class App extends Component {
       if (this.mounted) {
         this.setState({ events, locations: extractLocations(events) });
       }
+      if (!navigator.onLine) {
+        this.setState({ offLineText: 'Internet connection offline' });
+      }
     });
   }
 
