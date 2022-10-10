@@ -24,9 +24,11 @@ class App extends Component {
     getEvents().then((events) => {
       if (this.mounted) {
         this.setState({ events, locations: extractLocations(events) });
-      }
+      } //adding navigator.online logic to add error if offline and remove if online
       if (!navigator.onLine) {
         this.setState({ offLineText: 'Internet connection offline' });
+      } else {
+        this.setState({ offLineText:'' });
       }
     });
   }
