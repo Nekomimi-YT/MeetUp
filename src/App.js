@@ -16,7 +16,8 @@ class App extends Component {
       locations: [],
       currentLocation: 'all',
       numberOfEvents: 32,
-      offlineText: ''
+      offlineText: '',
+      showWelcomeScreen: undefined
     }
   }
 
