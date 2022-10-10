@@ -26,7 +26,7 @@ class App extends Component {
         this.setState({ events, locations: extractLocations(events) });
       } //adding navigator.online logic to add error if offline and remove if online
       if (!navigator.onLine) {
-        this.setState({ offLineText: 'Internet connection offline' });
+        this.setState({ offLineText: 'Internet connection offline: events loaded from cache.' });
       } else {
         this.setState({ offLineText:'' });
       }
