@@ -10,7 +10,6 @@ class NumberOfEvents extends Component {
   handleInputChanged = (event) => {
     let value = event.target.value;
     this.setState ({ numberOfEvents: value });
-    //let r = /[1-9]|1[0-9]|2\d|3[012]/; Can we use this regex instead?
     if (value < 1 || value > 32) {
       this.setState ({
         errorText: 'Please enter a number between 1-32.'
