@@ -21,19 +21,34 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({ events, locations: extractLocations(events) });
-      } //adding navigator.online logic to add error if offline and remove if online
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = (await checkToken(accessToken)).error 
+      ? false 
+      : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get('code');
+    this.setState({ 
+      showWelcomeScreen: !(code || isTokenValid) 
+    });
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({ 
+            events, locations: extractLocations(events) 
+          });
+        }
+      });
+    }
+  }
+      
+      /*adding navigator.online logic to add error if offline and remove if online
       if (!navigator.onLine) {
         this.setState({ offLineText: 'Internet connection offline: events loaded from cache.' });
       } else {
         this.setState({ offLineText:'' });
-      }
-    });
-  }
+      }*/
 
   componentWillUnmount(){
     this.mounted = false;
