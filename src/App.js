@@ -66,7 +66,8 @@ class App extends Component {
   }
 
   render() {
-    const { events, locations, numberOfEvents, offlineText } = this.state;
+    const { events, locations, numberOfEvents, offlineText, showWelcomeScreen } = this.state;
+    if (showWelcomeScreen === undefined) return <div className="App" />
     return (
       <div className="App">
         <h1>MeetUp Events</h1>
