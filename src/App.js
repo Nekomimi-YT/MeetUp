@@ -3,6 +3,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
+import { OfflineAlert } from './Alert';
 import './nprogress.css';
 import './App.css';
 
@@ -13,7 +14,8 @@ class App extends Component {
       events: [],
       locations: [],
       currentLocation: 'all',
-      numberOfEvents: 32
+      numberOfEvents: 32,
+      offlineText: ''
     }
   }
 
@@ -57,10 +59,11 @@ class App extends Component {
   }
 
   render() {
-    const { events, locations, numberOfEvents } = this.state;
+    const { events, locations, numberOfEvents, offlineText } = this.state;
     return (
       <div className="App">
         <h1>MeetUp Events</h1>
+        <OfflineAlert text={ offlineText } />
         <div>
           <CitySearch locations={ locations } updateEvents={ this.updateEvents }/>
         </div>
