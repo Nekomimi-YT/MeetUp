@@ -81,6 +81,8 @@ class App extends Component {
         <div>
           <EventList events={ events } />
         </div>
+        <WelcomeScreen showWelcomeScreen={showWelcomeScreen}
+          getAccessToken={() => { getAccessToken() }} />
       </div>
     );
   }
