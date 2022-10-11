@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
@@ -101,7 +102,22 @@ class App extends Component {
           <CitySearch locations={ locations } updateEvents={ this.updateEvents }/>
         </div>
         <div>
-          <NumberOfEvents updateEvents={ this.updateEvents } numberOfEvents={ numberOfEvents }/> 
+          <NumberOfEvents updateEvents={ this.updateEvents } numberOfEvents={ numberOfEvents }/>
+          <h4>Events in each city</h4>
+
+          <ScatterChart
+            width={400}
+            height={400}
+            margin={{
+              top: 20, right: 20, bottom: 20, left: 20,
+            }}
+          >
+          <CartesianGrid />
+          <XAxis type="number" dataKey="x" name="stature" unit="cm" />
+          <YAxis type="number" dataKey="y" name="weight" unit="kg" />
+          <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+          <Scatter name="A school" data={data} fill="#8884d8" />
+          </ScatterChart> 
         </div>
         <div>
           <EventList events={ events } />
