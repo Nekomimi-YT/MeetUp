@@ -43,7 +43,10 @@ class App extends Component {
       });
     }
     window.addEventListener('offline', function(event){
-      console.log("You lost connection.");
+      console.log('you are offline');
+    });
+    window.addEventListener('online', function(event){
+      console.log('you are online');
     });
     if (!navigator.onLine) {
       this.setState({ offLineText: 'Internet connection offline: events loaded from cache.' });
