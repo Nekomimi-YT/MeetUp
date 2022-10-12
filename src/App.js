@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+//import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
@@ -42,14 +42,20 @@ class App extends Component {
         }
       });
     }
+    if (!navigator.onLine) {
+      this.setState({ offLineText: 'Internet connection offline: events loaded from cache.' });
+    } else {
+      this.setState({ offLineText:'' });
+    }
   }
-      
-  /*adding navigator.online logic to add error if offline and remove if online
-  if (!navigator.onLine) {
-    this.setState({ offLineText: 'Internet connection offline: events loaded from cache.' });
-  } else {
-    this.setState({ offLineText:'' });
-  }*/
+
+  /*alternate on/offline logic to add error if offline and remove if online
+  window.addEventListener('offline', function(event){
+    console.log("You lost connection."); //logs ok? then this.setState({warningMsg:"You're offline!"})
+    });
+    window.addEventListener(‘online’, function(event){
+    console.log("You are now back online.");
+    });*/
 
   componentWillUnmount(){
     this.mounted = false;
@@ -98,12 +104,9 @@ class App extends Component {
       <div className="App">
         <h1>MeetUp Events</h1>
         <OfflineAlert text={ offlineText } />
-        <div>
-          <CitySearch locations={ locations } updateEvents={ this.updateEvents }/>
-        </div>
-        <div>
-          <NumberOfEvents updateEvents={ this.updateEvents } numberOfEvents={ numberOfEvents }/>
-          <h4>Events in each city</h4>
+        <CitySearch locations={ locations } updateEvents={ this.updateEvents }/>
+        <NumberOfEvents updateEvents={ this.updateEvents } numberOfEvents={ numberOfEvents }/>
+          {/*<h4>Events in each city</h4>
 
           <ScatterChart
             width={400}
@@ -113,15 +116,12 @@ class App extends Component {
             }}
           >
           <CartesianGrid />
-          <XAxis type="number" dataKey="x" name="stature" unit="cm" />
-          <YAxis type="number" dataKey="y" name="weight" unit="kg" />
+          <XAxis type="category" dataKey="city" name="city" />
+          <YAxis type="number" dataKey="number" name="number of events" allowDecimals={false}/>
           <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-          <Scatter name="A school" data={data} fill="#8884d8" />
-          </ScatterChart> 
-        </div>
-        <div>
-          <EventList events={ events } />
-        </div>
+          <Scatter data={this.getData()} fill="#8884d8" />
+          </ScatterChart> */}
+        <EventList events={ events } />
         <WelcomeScreen showWelcomeScreen={showWelcomeScreen}
           getAccessToken={() => { getAccessToken() }} />
       </div>
