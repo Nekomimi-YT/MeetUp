@@ -33,7 +33,7 @@ class InfoAlert extends Alert {
 class ErrorAlert extends Alert {
   constructor(props) {
     super(props);
-    this.color = 'red';
+    this.color = 'blue';
     this.fontSize = '14px';
   }
 }
@@ -41,7 +41,7 @@ class ErrorAlert extends Alert {
 class OfflineAlert extends Alert {
   constructor(props) {
     super(props);
-    this.color = 'black';
+    this.color = 'red';
     this.fontSize = '18px';
   }
 }
