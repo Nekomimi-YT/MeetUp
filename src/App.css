@@ -121,7 +121,7 @@ input[type="number"] {
 }
 
 .calendar-link {
-  color: rgb(241, 59, 39);
+  color: rgb(241, 59, 39) !important;
   padding-left: 3px;
 }
 
