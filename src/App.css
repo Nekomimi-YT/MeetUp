@@ -159,6 +159,8 @@ input[type="number"] {
 
 .Alert {
   text-align: center;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .data-vis-wrapper {
