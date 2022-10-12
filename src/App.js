@@ -44,8 +44,10 @@ class App extends Component {
     }
     if (!navigator.onLine) {
       this.setState({ offLineText: 'Internet connection offline: events loaded from cache.' });
+      console.log('offline');
     } else {
       this.setState({ offLineText:'' });
+      console.log('online');
     }
   }
 
