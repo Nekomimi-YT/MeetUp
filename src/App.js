@@ -56,27 +56,6 @@ class App extends Component {
     });
   }
 
-  /*alternate on/offline logic to add error if offline and remove if online
-  window.addEventListener('offline', function(event){
-      console.log('you are offline');
-      return this.setState({ 
-        offlineText: 'Internet connection offline: events loaded from cache.' 
-      });
-    });
-    window.addEventListener('online', function(event){
-      console.log('you are online');
-      return this.setState({ 
-        offlineText: '' 
-      });
-    });
-  if (!navigator.onLine) {
-      this.setState({ offLineText: 'Internet connection offline: events loaded from cache.' });
-      console.log('offline');
-    } else {
-      this.setState({ offLineText:'' });
-      console.log('online');
-    }*/
-
   componentWillUnmount(){
     this.mounted = false;
   }
