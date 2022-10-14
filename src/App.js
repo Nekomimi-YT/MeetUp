@@ -45,7 +45,7 @@ class App extends Component {
     window.addEventListener('offline', (event) => {
       console.log('you are offline');
       return this.setState({ 
-        offlineText: 'Internet connection offline: events loaded from cache.' 
+        offlineText: 'Offline: App is loading from cache!' 
       });
     });
     window.addEventListener('online', (event) => {
