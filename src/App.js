@@ -42,13 +42,13 @@ class App extends Component {
         }
       });
     }
-    window.addEventListener('offline', function(event){
+    window.addEventListener('offline', (event) => {
       console.log('you are offline');
       return this.setState({ 
         offlineText: 'Internet connection offline: events loaded from cache.' 
       });
     });
-    window.addEventListener('online', function(event){
+    window.addEventListener('online', (event) => {
       console.log('you are online');
       return this.setState({ 
         offlineText: '' 
