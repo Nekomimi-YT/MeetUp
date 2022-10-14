@@ -42,28 +42,31 @@ class App extends Component {
         }
       });
     }
-    window.addEventListener('offline', function(event){
-      console.log('you are offline');
-    });
-    window.addEventListener('online', function(event){
-      console.log('you are online');
-    });
     if (!navigator.onLine) {
-      this.setState({ offLineText: 'Internet connection offline: events loaded from cache.' });
+      this.setState({ offlineText: 'Internet connection offline: events loaded from cache.' });
       console.log('offline');
     } else {
-      this.setState({ offLineText:'' });
+      this.setState({ offlineText:'' });
       console.log('online');
     }
   }
 
   /*alternate on/offline logic to add error if offline and remove if online
   window.addEventListener('offline', function(event){
-    console.log("You lost connection."); //logs ok? then this.setState({warningMsg:"You're offline!"})
+      console.log('you are offline');
+      this.setState({ offlineText: 'Internet connection offline: events loaded from cache.' });
     });
-    window.addEventListener(‘online’, function(event){
-    console.log("You are now back online.");
-    });*/
+    window.addEventListener('online', function(event){
+      console.log('you are online');
+      this.setState({ offlineText: '' });
+    });
+  if (!navigator.onLine) {
+      this.setState({ offLineText: 'Internet connection offline: events loaded from cache.' });
+      console.log('offline');
+    } else {
+      this.setState({ offLineText:'' });
+      console.log('online');
+    }*/
 
   componentWillUnmount(){
     this.mounted = false;
