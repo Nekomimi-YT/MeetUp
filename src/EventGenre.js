@@ -26,3 +26,5 @@ const data = [
     </ResponsiveContainer>
   );
 }
+
+export default EventGenre;
