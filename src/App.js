@@ -113,9 +113,9 @@ class App extends Component {
               }}
             >
             <CartesianGrid />
-            <XAxis type="category" dataKey="city" name="Location" angle={45} />
+            <XAxis type="category" dataKey="city" name="Location" transform="rotate(-35)" textAnchor="end"/>
             <YAxis type="number" dataKey="number" name="# of Events" allowDecimals={false}/>
-            <Tooltip cursor={{ strokeDasharray: '3 3' }} itemStyle={{fontSize: '13px'}}/>
+            <Tooltip cursor={{ strokeDasharray: "3 3" }} itemStyle={{fontSize: "13px"}}/>
             <Scatter data={this.getData()} fill="rgb(241, 59, 39)" />
             </ScatterChart>
           </ResponsiveContainer>
