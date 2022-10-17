@@ -105,7 +105,7 @@ class App extends Component {
         <OfflineAlert text={ offlineText } />
         <CitySearch locations={ locations } updateEvents={ this.updateEvents }/>
         <NumberOfEvents updateEvents={ this.updateEvents } numberOfEvents={ numberOfEvents }/>
-          {/*<h4>Events in each city</h4>
+          <h4>Events in each city</h4>
 
           <ScatterChart
             width={400}
@@ -119,7 +119,7 @@ class App extends Component {
           <YAxis type="number" dataKey="number" name="number of events" allowDecimals={false}/>
           <Tooltip cursor={{ strokeDasharray: '3 3' }} />
           <Scatter data={this.getData()} fill="#8884d8" />
-          </ScatterChart> */}
+          </ScatterChart>
         <EventList events={ events } />
         <WelcomeScreen showWelcomeScreen={showWelcomeScreen}
           getAccessToken={() => { getAccessToken() }} />
