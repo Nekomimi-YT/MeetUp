@@ -7,7 +7,7 @@ const EventGenre = ({ events }) => {
 
   const [data, setData] = useState([]);
   
-  getData = () => {
+  const getData = () => {
     const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS'];
     const data = genres.map((genre) => {
       const value = events.filter(({ summary }) =>
