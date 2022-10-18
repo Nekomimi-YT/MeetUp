@@ -38,7 +38,7 @@ const EventGenre = ({ events }) => {
         >
           {
             data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={colors[index % colors.length]} fontSize={16}/>
+              <Cell key={`cell-${index}`} fill={colors[index % colors.length]} fontSize={14}/>
             ))
           }
         </Pie>
