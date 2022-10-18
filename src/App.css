@@ -216,7 +216,7 @@ input[type="number"] {
 @media only screen and (min-width: 992px) {
   .data-vis-wrapper {
     flex-direction: row;
-    align-content: space-around;
+    align-content: space-between;
     flex-basis: 50%;
     max-width: 50%;
     min-width: auto;
