@@ -163,16 +163,13 @@ input[type="number"] {
 
 .data-vis-wrapper {
   display: flex;
-  align-items: center;
-  align-content: space-around;
+  min-width: 100%;
+  text-align: center;
   flex-direction: column;
   padding-bottom: 30px;
+  overflow: visible;
 }
 
-.data-vis-wrapper {
-  min-width: 100%;
-  display: flex;
-}
 .recharts-surface {
   overflow: visible;
 }
@@ -219,10 +216,11 @@ input[type="number"] {
 @media only screen and (min-width: 992px) {
   .data-vis-wrapper {
     flex-direction: row;
+    align-content: space-around;
   }
   .data-vis-wrapper {
     flex-basis: 50%;
-    max-width: 70%;
+    max-width: 50%;
     min-width: auto;
     margin: 0 auto;
   }
