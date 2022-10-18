@@ -14,7 +14,7 @@ const EventGenre = ({ events }) => {
           summary.split(' ').includes(genre)
         ).length;
         if (genre === 'JavaScript') {
-          genre = 'Js';
+          genre = 'JS';
         }
         return { name: genre, value };
     });
