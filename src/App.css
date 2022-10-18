@@ -163,9 +163,9 @@ input[type="number"] {
 
 .data-vis-wrapper {
   display: flex;
+  flex-direction: column;
   min-width: 100%;
   align-items: center;
-  flex-direction: column;
   padding-bottom: 30px;
   overflow: visible;
 }
