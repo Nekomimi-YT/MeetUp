@@ -124,6 +124,7 @@ class App extends Component {
             </ScatterChart>
           </ResponsiveContainer>
         </div>
+        <br />
         <EventList events={ events } />
         <WelcomeScreen showWelcomeScreen={showWelcomeScreen}
           getAccessToken={() => { getAccessToken() }} />
