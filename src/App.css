@@ -165,8 +165,8 @@ input[type="number"] {
   display: flex;
   align-items: center;
   align-content: space-around;
-  flex-direction: row;
-  padding-bottom: 20px;
+  flex-direction: column;
+  padding-bottom: 30px;
 }
 
 .data-vis-wrapper .recharts-responsive-container {
@@ -218,7 +218,7 @@ input[type="number"] {
 
 @media only screen and (min-width: 992px) {
   .data-vis-wrapper {
-    flex-direction: column;
+    flex-direction: row;
   }
   .data-vis-wrapper .recharts-responsive-container {
     flex-basis: 50%;
