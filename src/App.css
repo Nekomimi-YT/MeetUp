@@ -167,7 +167,7 @@ input[type="number"] {
   min-width: 100%;
   align-items: center;
   padding-bottom: 30px;
-  overflow: visible;
+  overflow: scroll;
 }
 
 .recharts-surface {
@@ -216,7 +216,6 @@ input[type="number"] {
 @media only screen and (min-width: 992px) {
   .data-vis-wrapper {
     flex-direction: row;
-    align-content: center;
     flex-basis: 50%;
     max-width: 50%;
     min-width: auto;
