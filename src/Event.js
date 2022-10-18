@@ -44,6 +44,7 @@ class Event extends Component {
         </div>
         ) : null
       }
+      <br />
       <button className="details-btn" onClick={() => {this.handleCollapse()}}>{buttonText}</button>
     </div>
   }
