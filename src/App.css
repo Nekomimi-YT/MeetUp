@@ -170,10 +170,6 @@ input[type="number"] {
   overflow: scroll;
 }
 
-.recharts-surface {
-  overflow: visible;
-}
-
 .google-btn {
   width: 184px;
   height: 42px;
