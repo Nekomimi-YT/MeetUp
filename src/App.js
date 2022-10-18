@@ -106,23 +106,24 @@ class App extends Component {
         <OfflineAlert text={ offlineText } />
         <CitySearch locations={ locations } updateEvents={ this.updateEvents }/>
         <NumberOfEvents updateEvents={ this.updateEvents } numberOfEvents={ numberOfEvents }/>
-          <h4>Events in each city</h4>
-          <div className="data-vis-wrapper">
-            <EventGenre events={events} />
-            <ResponsiveContainer height={400}>
-              <ScatterChart
-                margin={{
-                  top: 20, right: 20, bottom: 20, left: 20,
-                }}
-              >
-              <CartesianGrid />
-              <XAxis type="category" dataKey="city" name="Location" angle={-35} textAnchor="end" fontSize={16}/>
-              <YAxis type="number" dataKey="number" name="# of Events" allowDecimals={false} fontSize={16}/>
-              <Tooltip cursor={{ strokeDasharray: "3 3" }} itemStyle={{fontSize: "13px"}}/>
-              <Scatter data={this.getData()} fill="rgb(241, 59, 39)" />
-              </ScatterChart>
-            </ResponsiveContainer>
-          </div>
+        <br />
+        <h4>Events in each city</h4>
+        <div className="data-vis-wrapper">
+          <EventGenre events={events} />
+          <ResponsiveContainer height={400}>
+            <ScatterChart
+              margin={{
+                top: 20, right: 20, bottom: 20, left: 20,
+              }}
+            >
+            <CartesianGrid />
+            <XAxis type="category" dataKey="city" name="Location" angle={-35} textAnchor="end" fontSize={16}/>
+            <YAxis type="number" dataKey="number" name="# of Events" allowDecimals={false} fontSize={16}/>
+            <Tooltip cursor={{ strokeDasharray: "3 3" }} itemStyle={{fontSize: "13px"}}/>
+            <Scatter data={this.getData()} fill="rgb(241, 59, 39)" />
+            </ScatterChart>
+          </ResponsiveContainer>
+        </div>
         <EventList events={ events } />
         <WelcomeScreen showWelcomeScreen={showWelcomeScreen}
           getAccessToken={() => { getAccessToken() }} />
