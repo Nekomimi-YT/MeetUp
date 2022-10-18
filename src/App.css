@@ -169,7 +169,7 @@ input[type="number"] {
   padding-bottom: 30px;
 }
 
-.data-vis-wrapper .recharts-responsive-container {
+.data-vis-wrapper {
   min-width: 100%;
   display: flex;
 }
@@ -220,7 +220,7 @@ input[type="number"] {
   .data-vis-wrapper {
     flex-direction: row;
   }
-  .data-vis-wrapper .recharts-responsive-container {
+  .data-vis-wrapper {
     flex-basis: 50%;
     max-width: 70%;
     min-width: auto;
