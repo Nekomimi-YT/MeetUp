@@ -19,7 +19,7 @@ const EventGenre = ({ events }) => {
     return data;
   };
 
-  const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+  const colors = ["#0088FE", "rgb(167, 197, 236)", "#00C49F", "#FF8042", "rgb(241, 59, 39)"];
 
   return (
     <ResponsiveContainer height={400} >
@@ -36,7 +36,7 @@ const EventGenre = ({ events }) => {
         >
           {
             data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={colors[index % colors.length]}/>
+              <Cell key={`cell-${index}`} fill={colors[index % colors.length]} fontSize={16}/>
             ))
           }
         </Pie>
