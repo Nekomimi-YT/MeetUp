@@ -19,7 +19,7 @@ const EventGenre = ({ events }) => {
     return data;
   };
 
-  const colors = ["#0088FE", "rgb(167, 197, 236)", "#00C49F", "#FF8042", "rgb(241, 59, 39)"];
+  const colors = ["#0088FE", "#03F0FC", "#00C49F", "#FF8042", "#F13B27"];
 
   return (
     <ResponsiveContainer className="recharts-surface" height={400} >
