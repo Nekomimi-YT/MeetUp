@@ -168,6 +168,10 @@ input[type="number"] {
   min-width: 100%;
 }
 
+.recharts-legend-item { 
+  font-size: 16px; 
+}
+
 .google-btn {
   width: 184px;
   height: 42px;
