@@ -163,10 +163,9 @@ input[type="number"] {
 
 .data-vis-wrapper {
   display: flex;
+  align-items: center;
   flex-direction: column;
   min-width: 100%;
-  text-align: center;
-  padding-bottom: 25px;
 }
 
 .google-btn {
