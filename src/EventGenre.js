@@ -18,7 +18,6 @@ const EventGenre = ({ events }) => {
         }
         return { name: genre, value };
     });
-    console.log(data);
     return data;
   };
 
