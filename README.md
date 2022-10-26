@@ -9,13 +9,19 @@ To build a serverless, progressive web application (PWA) with React using a test
 
 ![Event list with more or less detail](./img/Event_Details.png)
 
+## Key Technologies: 
+* React - Front End Framework
+* Enzyme, Jest, Puppeteer, Jest-Cucumber - Testing
+* AWS Lambda, Axios - Deployment and OAuth2
+* Google Calendar API
+
 ## Key Features: 
 * Filter events by city. 
 * Show/hide event details. 
 * Specify number of events. 
 * Use the app when offline. 
 * Add an app shortcut to the home screen. 
-* View a chart showing the number of upcoming events by city.
+* Easily view data about upcoming events.
 
 ## User Stories and Scenario Tests
 
