@@ -10,9 +10,9 @@ To build a serverless, progressive web application (PWA) with React using a test
 ![Event list with more or less detail](./img/Event_Details.png)
 
 ## Key Technologies: 
-* React - Front End Framework
-* Enzyme, Jest, Puppeteer, Jest-Cucumber - Testing
-* AWS Lambda, Axios - Deployment and OAuth2
+* Front End Framework: React 
+* Tests: Enzyme, Jest, Puppeteer, Jest-Cucumber 
+* Deployment and OAuth2: AWS Lambda, Axios, Github Pages
 * Google Calendar API
 
 ## Key Features: 
