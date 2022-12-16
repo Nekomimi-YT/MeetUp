@@ -9,7 +9,7 @@ import { extractLocations, getEvents } from '../api';
 
 describe('<App /> component', () => {
   let AppWrapper;
-  beforeAll( () => {
+  beforeAll(() => {
     AppWrapper = shallow(<App />);
   });
 
@@ -46,7 +46,9 @@ describe('<App /> integration', () => {
     const AppWrapper = mount(<App />);
     const AppLocationsState = AppWrapper.state('locations');
     expect(AppLocationsState).not.toEqual(undefined);
-    expect(AppWrapper.find(CitySearch).props().locations).toEqual(AppLocationsState);
+    expect(AppWrapper.find(CitySearch).props().locations).toEqual(
+      AppLocationsState
+    );
     AppWrapper.unmount();
   });
 
@@ -56,11 +58,13 @@ describe('<App /> integration', () => {
     const locations = extractLocations(mockData);
     CitySearchWrapper.setState({ suggestions: locations });
     const suggestions = CitySearchWrapper.state('suggestions');
-    const selectedIndex = Math.floor(Math.random() * (suggestions.length));
+    const selectedIndex = Math.floor(Math.random() * suggestions.length);
     const selectedCity = suggestions[selectedIndex];
     await CitySearchWrapper.instance().handleItemClicked(selectedCity);
     const allEvents = await getEvents();
-    const eventsToShow = allEvents.filter(event => event.location === selectedCity);
+    const eventsToShow = allEvents.filter(
+      (event) => event.location === selectedCity
+    );
     expect(AppWrapper.state('events')).toEqual(eventsToShow);
     AppWrapper.unmount();
   });
@@ -78,17 +82,19 @@ describe('<App /> integration', () => {
     const AppWrapper = mount(<App />);
     const AppnumberOfEventsState = AppWrapper.state('numberOfEvents');
     expect(AppnumberOfEventsState).not.toEqual(undefined);
-    expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(AppnumberOfEventsState);
+    expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(
+      AppnumberOfEventsState
+    );
     AppWrapper.unmount();
   });
 
-  test ('update # of events when updateEvents is called when user changes # of events value', () => {
+  test('update # of events when updateEvents is called when user changes # of events value', () => {
     const AppWrapper = mount(<App />);
     AppWrapper.instance().updateEvents = jest.fn();
-    AppWrapper.instance().forceUpdate();  //forces a re-render
+    AppWrapper.instance().forceUpdate(); //forces a re-render
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
     NumberOfEventsWrapper.instance().handleInputChanged({
-      target: { value: 2 }, //I only have 2 events
+      target: { value: 2 } //I only have 2 events
     });
     expect(AppWrapper.instance().updateEvents).toHaveBeenCalledTimes(1);
     expect(AppWrapper.instance().updateEvents).toHaveBeenCalledWith(null, 2);

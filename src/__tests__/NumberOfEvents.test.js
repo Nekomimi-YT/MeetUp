@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import NumberOfEvents from '../NumberOfEvents'
+import NumberOfEvents from '../NumberOfEvents';
 
 describe('<NumberOfEvents /> component', () => {
   let NumberOfEventsWrapper;
-  beforeAll( () => {
-    NumberOfEventsWrapper = shallow(<NumberOfEvents updateEvents={() => {}}/>);
+  beforeAll(() => {
+    NumberOfEventsWrapper = shallow(<NumberOfEvents updateEvents={() => {}} />);
   });
 
   test('render text input', () => {
@@ -13,21 +13,27 @@ describe('<NumberOfEvents /> component', () => {
   });
 
   test('text input id to be "eventNumber"', () => {
-    expect(NumberOfEventsWrapper.find('.events').at(0).props().id).toEqual('eventNumber');
+    expect(NumberOfEventsWrapper.find('.events').at(0).props().id).toEqual(
+      'eventNumber'
+    );
   });
 
   test('correct label for text input', () => {
-    expect(NumberOfEventsWrapper.find('.eventLabel').text()).toBe('Number of Events');
+    expect(NumberOfEventsWrapper.find('.eventLabel').text()).toBe(
+      'Number of Events'
+    );
   });
 
   test('renders text input correctly', () => {
     const numberOfEvents = NumberOfEventsWrapper.state('numberOfEvents');
-    expect(NumberOfEventsWrapper.find('.events').prop('value')).toBe(numberOfEvents);
+    expect(NumberOfEventsWrapper.find('.events').prop('value')).toBe(
+      numberOfEvents
+    );
   });
 
   test('change state when text input changes', () => {
-    let eventObject = { target: { value: '10' }};
+    let eventObject = { target: { value: '10' } };
     NumberOfEventsWrapper.find('.events').simulate('change', eventObject);
     expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe('10');
-  });  
-})
+  });
+});

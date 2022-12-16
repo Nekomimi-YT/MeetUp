@@ -5,9 +5,9 @@ import { mockData } from '../mock-data';
 
 describe('<Event /> component', () => {
   let event, EventWrapper;
-  beforeAll( () => {
+  beforeAll(() => {
     event = mockData[0];
-    EventWrapper = shallow(<Event event={event}/>);
+    EventWrapper = shallow(<Event event={event} />);
   });
 
   test('render collapsed event info container', () => {
@@ -29,21 +29,21 @@ describe('<Event /> component', () => {
     const handleCollapse = EventWrapper.handleCollapse;
     EventWrapper.setState({ uncollapsed: false });
     EventWrapper.setState({ buttonText: 'Show details' });
-    expect(EventWrapper.state('uncollapsed')).toBe(false); 
+    expect(EventWrapper.state('uncollapsed')).toBe(false);
     expect(EventWrapper.state('buttonText')).toBe('Show details');
     EventWrapper.find('.details-btn').simulate('click', handleCollapse);
     expect(EventWrapper.state('uncollapsed')).toBe(true);
     expect(EventWrapper.state('buttonText')).toBe('Hide details');
     EventWrapper.find('.details-btn').simulate('click', handleCollapse);
-    expect(EventWrapper.state('uncollapsed')).toBe(false); 
+    expect(EventWrapper.state('uncollapsed')).toBe(false);
     expect(EventWrapper.state('buttonText')).toBe('Show details');
   });
 
   test('render state-specific innerText in button', () => {
-    const buttonText= EventWrapper.state('buttonText'); 
-    expect((EventWrapper.find('.details-btn')).text()).toContain(buttonText);
+    const buttonText = EventWrapper.state('buttonText');
+    expect(EventWrapper.find('.details-btn').text()).toContain(buttonText);
   });
-  
+
   test('render collapsed event info text', () => {
     expect(EventWrapper.find('.collapsedDetails').children()).toHaveLength(3);
   });
@@ -53,4 +53,4 @@ describe('<Event /> component', () => {
     EventWrapper.find('.details-btn').simulate('click', handleCollapse);
     expect(EventWrapper.find('.uncollapsedDetails').children()).toHaveLength(3);
   });
-})
+});
